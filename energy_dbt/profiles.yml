@@ -1,0 +1,6 @@
+energy_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /opt/airflow/spark_data/gold/energy.duckdb

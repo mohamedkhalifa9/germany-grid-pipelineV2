@@ -1,0 +1,42 @@
+
+version: 2
+
+models:
+
+  - name: gold_daily_prices
+    description: "Daily average energy prices from SMARD"
+    columns:
+      - name: day
+        description: "The date"
+        data_tests:
+          - unique
+          - not_null
+
+  - name: gold_total_consumption
+    description: "Total energy consumption from SMARD"
+    columns:
+      - name: day
+        description: "The date"
+        data_tests:
+          - unique
+          - not_null
+  - name: gold_total_generation
+    description: "Total energy generation from SMARD"
+    columns:
+      - name: day
+        description: "The date"
+        data_tests:
+          - unique
+          - not_null
+  - name: gold_prices_weather
+    description: "Daily average energy prices and weather data from Open-Meteo"
+    columns:
+      - name: day
+        description: "The date"
+        data_tests:
+          - unique
+          - not_null
+      - name: average_price
+        description: "The average price"
+        data_tests:
+          - not_null

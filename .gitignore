@@ -1,0 +1,22 @@
+# Data
+spark_data/
+
+# Airflow logs and runtime
+logs/
+.cache/
+
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# dbt
+energy_dbt/target/
+energy_dbt/dbt_packages/
+energy_dbt/*.duckdb
+energy_dbt/.user.yml
+
+# Docker
+*.log
