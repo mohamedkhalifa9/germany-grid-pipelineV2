@@ -36,6 +36,7 @@ Open-Meteo API →  Bronze (parquet)     ─────────────
 - Fetches energy data for 10 energy types from SMARD
 - Transforms raw JSON to clean parquet with PySpark
 - Triggers dbt Gold models after Silver is ready
+
 **`weather_pipeline`** — runs daily at 01:00
 - Fetches daily weather for Germany (Berlin coordinates)
 - Triggers `gold_prices_weather` dbt model
