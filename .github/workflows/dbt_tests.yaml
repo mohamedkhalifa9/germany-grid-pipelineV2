@@ -1,21 +1,37 @@
-name: dbt tests          # name shown in GitHub UI
+name: dbt tests
 
-on:                      # when to trigger
+on:
   push:
     branches:
       - main
 
 jobs:
-  test:                  # job name
-    runs-on: ubuntu-latest   # what machine to use
+  test:
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v4
+
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
+
       - name: Install dbt
         run: pip install dbt-duckdb
-      - name: Run dbt tests
-        run: cd energy_dbt && dbt compile --profiles-dir .
+
+      - name: Create dbt profile
+        working-directory: energy_dbt
+        run: |
+          cat > profiles.yml << 'EOF'
+          energy_dbt:
+            target: dev
+            outputs:
+              dev:
+                type: duckdb
+                path: ci.duckdb
+          EOF
+
+      - name: Compile dbt project
+        working-directory: energy_dbt
+        run: dbt compile --profiles-dir .
