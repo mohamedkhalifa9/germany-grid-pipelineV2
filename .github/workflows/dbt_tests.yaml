@@ -18,4 +18,4 @@ jobs:
       - name: Install dbt
         run: pip install dbt-duckdb
       - name: Run dbt tests
-        run: cd energy_dbt && dbt test --profiles-dir .
+        run: cd energy_dbt && dbt test --profiles-dir . --empty-db
